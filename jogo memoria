@@ -1,0 +1,90 @@
+#include<stdio.h>
+#include<string.h>
+#include<stdlib.h>
+#include<time.h>
+#define MAX 4
+
+void gerar(int matriz[MAX][MAX])
+{
+    int i,j;
+    int v = 1;
+    for(i=0; i<MAX; i++) {
+        for(j=0; j<MAX; j++)
+        {
+            if(v==9)
+                v=1;
+            matriz[i][j]=v++;
+           }
+	}
+}
+void lermatriz(int matriz[i][j])
+{
+	int i,j,i2,j2;	
+
+	printf("ponha a linha que quer abrir");
+	scanf("%d", &i);
+	printf("ponha a coluna que quer ir");
+	printf("%d", &j);
+	
+	printf("ponha a linha que quer abrir e que esta o outo num igual");
+	scanf("%d", &i2);
+	if(i2==i)
+	    printf("numero invalido");
+
+	printf("ponha a coluna que quer ir e que acha que o nim é igual");
+	printf("%d", &j2);
+	
+	if(j2==j)
+	    printf("numero invalido");
+		else if(j>MAX || i>MAX)
+			printf("mumero invalido");	
+				
+}
+void jogada(int matriz[MAX][MAX])  
+{
+	
+
+	
+
+}
+ 
+void embaralhar(int matriz[MAX][MAX])
+{
+        int k;
+        int x1,y1,x2,y2;
+        srand(time(NULL));
+        for(k=0; k<100; k++)
+            {
+                x1=rand() % 4;
+                y1=rand() % 4;
+                x2=rand() % 4;
+                y2=rand() % 4;
+
+                int tmp = matriz[x1][y1];
+                matriz[x1][y1]=matriz[x2][y2];
+                matriz[x2][y2]=tmp;
+            }
+}
+void mostrar(int matriz[MAX][MAX])
+{
+	int i,j;
+            for(i=0; i<MAX; i++)
+            {
+                for(j=0; j<MAX; j++)
+                {
+                    printf(" %i",matriz[i][j]);
+                }
+                printf("\n");
+            }
+            printf("\n");
+}
+int main()
+{
+          
+	    int matriz[MAX][MAX];
+            gerar(matriz);
+            embaralhar(matriz);
+	    lermatriz(matriz);
+            mostrar(matriz);
+            return 0;  
+}
